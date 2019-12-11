@@ -1,0 +1,10 @@
+#password {
+    border-color: #ccc;
+    border-style: dashed;
+    border-width:3px;
+    height: 150px;
+}
+
+/* .card-body {
+    width: 95%;
+} */
