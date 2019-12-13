@@ -16,11 +16,17 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var pool = specialCharacters.concat(numericCharacters, lowerCase, upperCase); // works well
 var randPwd = [];
 
-for (var i = 0; i < 8; i++) {
-    randPwd.push(pool[Math.floor(Math.random() * pool.length)]);
-}
+  var pwdLength = prompt("Please enter the number between and 8 and 128 to establish password length");
 
-console.log(randPwd.join(''));
+  if (pwdLength > 7 && pwdLength <129) {
+      for (var i = 0; i < pwdLength; i++) {
+      randPwd.push(pool[Math.floor(Math.random() * pool.length)]);
+  }
+  }
+  else {
+      alert("Please refresh the page and enter the number between and 8 and 128 to establish password length")
+  }
+  console.log(randPwd.join(''));
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
