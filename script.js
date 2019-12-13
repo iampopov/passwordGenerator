@@ -72,7 +72,7 @@ function generatePassword() {
   if (errr === true) {
     alert (`Please start over and select at least one pool of variables for password to generate`)
   } else {
-  alert('your password is: ' + randPwd.join(''));
+  return randPwd.join('');
   }
 }
 // Assignment Code
@@ -80,7 +80,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  console.log("click")
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
