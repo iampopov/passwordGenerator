@@ -13,20 +13,67 @@ var lowerCase = ["a", "b", "c",	"d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 //Uppercase characters
 
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var pool = specialCharacters.concat(numericCharacters, lowerCase, upperCase); // works well
+
 var randPwd = [];
 
-  var pwdLength = prompt("Please enter the number between and 8 and 128 to establish password length");
+var pwdLength = prompt("Please enter the number between and 8 and 128 to establish password length");
+var specialCaseOption = confirm("Would you like special characters in your password?");
+var upperCaseOption = confirm("Would you like upper case letters in your password?");
+var lowerCaseOption = confirm("Would you like lower case letters in your password?");
+var numbersOption = confirm("Would you like numbers in your password?");
 
-  if (pwdLength > 7 && pwdLength <129) {
-      for (var i = 0; i < pwdLength; i++) {
-      randPwd.push(pool[Math.floor(Math.random() * pool.length)]);
-  }
-  }
-  else {
-      alert("Please refresh the page and enter the number between and 8 and 128 to establish password length")
-  }
-  console.log(randPwd.join(''));
+var pwdChoices = {
+    pwdLength: pwdLength,
+    specialCaseOption: specialCaseOption,
+    upperCaseOption: upperCaseOption,
+    lowerCaseOption: lowerCaseOption,
+    numbersOption: numbersOption
+}
+
+pool = [];
+
+if (specialCaseOption === true) {
+    pool.push(specialCharacters);
+} 
+
+if (upperCaseOption === true) {
+    pool.push(upperCase);
+}
+
+if (lowerCaseOption === true) {
+    pool.push(lowerCase);
+}
+
+if (numbersOption === true) {
+    pool.push(numericCharacters);
+} 
+
+if (specialCaseOption === false && upperCaseOption === false && lowerCaseOption === false && numbersOption === false) {
+    var errr = true;
+}
+// console.log (errr);
+// console.log (pool);
+
+var poolJoined = pool.join(',');
+var poolArr = poolJoined.split(',');
+
+// console.log (poolArr);
+
+if (pwdLength > 7 && pwdLength <129) { //if (pwdLength > 7 && pwdLength <129) {
+    for (var i = 0; i < pwdLength; i++) { // sub 8 with pwdLength
+    randPwd.push(poolArr[Math.floor(Math.random() * poolArr.length)]);
+}
+}
+else {
+    alert("Please refresh the page and enter the number between and 8 and 128 to establish password length")
+}
+
+// console.log (randPwd);
+if (errr === true) {
+   alert (`Please start over and select at least one pool of variables for password to generate`)
+} else {
+alert('your password is: ' + randPwd.join(''));
+}
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
