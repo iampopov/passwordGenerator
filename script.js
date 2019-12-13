@@ -14,7 +14,6 @@ var lowerCase = ["a", "b", "c",	"d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-var randPwd = [];
 
 var pwdLength = prompt("Please enter the number between and 8 and 128 to establish password length");
 var specialCaseOption = confirm("Would you like special characters in your password?");
@@ -23,33 +22,33 @@ var lowerCaseOption = confirm("Would you like lower case letters in your passwor
 var numbersOption = confirm("Would you like numbers in your password?");
 
 var pwdChoices = {
-    pwdLength: pwdLength,
-    specialCaseOption: specialCaseOption,
-    upperCaseOption: upperCaseOption,
-    lowerCaseOption: lowerCaseOption,
-    numbersOption: numbersOption
+  pwdLength: pwdLength,
+  specialCaseOption: specialCaseOption,
+  upperCaseOption: upperCaseOption,
+  lowerCaseOption: lowerCaseOption,
+  numbersOption: numbersOption
 }
 
 pool = [];
 
 if (specialCaseOption === true) {
-    pool.push(specialCharacters);
+  pool.push(specialCharacters);
 } 
 
 if (upperCaseOption === true) {
-    pool.push(upperCase);
+  pool.push(upperCase);
 }
 
 if (lowerCaseOption === true) {
-    pool.push(lowerCase);
+  pool.push(lowerCase);
 }
 
 if (numbersOption === true) {
-    pool.push(numericCharacters);
+  pool.push(numericCharacters);
 } 
 
 if (specialCaseOption === false && upperCaseOption === false && lowerCaseOption === false && numbersOption === false) {
-    var errr = true;
+  var errr = true;
 }
 // console.log (errr);
 // console.log (pool);
@@ -59,6 +58,7 @@ var poolArr = poolJoined.split(',');
 
 // console.log (poolArr);
 
+var randPwd = [];
 if (pwdLength > 7 && pwdLength <129) { //if (pwdLength > 7 && pwdLength <129) {
     for (var i = 0; i < pwdLength; i++) { // sub 8 with pwdLength
     randPwd.push(poolArr[Math.floor(Math.random() * poolArr.length)]);
