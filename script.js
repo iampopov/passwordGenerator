@@ -14,6 +14,8 @@ var lowerCase = ["a", "b", "c",	"d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
+var forCopy = [];
+
 function generatePassword() {
   var pwdLength = prompt("Please enter the number between and 8 and 128 to establish password length");
   var specialCaseOption = confirm("Would you like special characters in your password?");
@@ -72,11 +74,13 @@ function generatePassword() {
   if (errr === true) {
     alert (`Please start over and select at least one pool of variables for password to generate`)
   } else {
+  forCopy.push(randPwd.join(''));
   return randPwd.join('');
   }
 }
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var copyBtn = document.querySelector("#copy");
 
 // Write password to the #password input
 function writePassword() {
@@ -89,12 +93,14 @@ function writePassword() {
   copyBtn.focus();
 }
 
-
 function copyToClipboard() {
   // BONUS 
-}
+  var text = forCopy;
+  navigator.clipboard.writeText(text).then(function(){
 
+  })
+}
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
+copyBtn.addEventListener("click", copyToClipboard);
 // BONUS EVENT LISTENER
